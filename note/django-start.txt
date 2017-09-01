@@ -1,0 +1,24 @@
+workon venv
+
+・プロジェクト生成
+django-admin.py startproject [project_name]
+
+・データベース接続設定 [project_name]/settings.py
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'keibadb',
+        'USER': 'root',
+        'PASSWORD':'password01',
+        'HOST':'',
+    }
+}
+
+・スーパーユーザー作成
+python3 manage.py createsuperuser
+
+・起動
+python3 manage.py runserver 0.0.0.0:8000
+
+・アプリケーション生成 
+python manage.py startapp [app_name]

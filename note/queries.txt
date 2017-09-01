@@ -1,0 +1,56 @@
+DROP TABLE IF EXISTS keibadb.sampling_horse_kihon_tbl;
+CREATE TABLE keibadb.uma_kihon_tbl(
+race_key integer comment 'レースキー',
+blad_int integer comment '血統登録番号',
+age integer comment '馬年齢',
+sex integer comment '性別',
+primary key (race_key,blad_int))ENGINE = Innodb DEFAULT CHARSET = UTF8
+comment='馬基本テーブル';
+
+DROP TABLE IF EXISTS keibadb.sampling_zensou_tbl;
+CREATE TABLE keibadb.zensou_tbl(
+seiseki_key integer comment '競争成績キー',
+zensou_kyori integer comment '前走距離',
+zensou_tm_sa integer comment '前走タイム差',
+zensou_3ftm_before integer comment '前走前3Fタイム',
+zensou_3ftm_after integer comment '前走後3Fタイム',
+primary key (seiseki_key))ENGINE = Innodb DEFAULT CHARSET = UTF8
+comment='前走テーブル';
+
+DROP TABLE IF EXISTS keibadb.sampling_kyousouba_tbl;
+CREATE TABLE keibadb.kyousouba_tbl(
+race_key integer comment 'レースキー',
+blad_int integer comment '血統登録番号',
+umaban integer comment '馬番',
+zensou_seiseki_key integer comment '前走競争成績キー',
+zensou_race_key integer comment '前走レースキー',
+kyakushitu Integer comment '脚質',
+primary key (blad_int,race_key,umaban) )ENGINE = Innodb DEFAULT CHARSET = UTF8
+comment='競争馬テーブル';
+
+DROP TABLE IF EXISTS keibadb.sampling_kishu_sabun_tbl;
+CREATE TABLE keibadb.kishu_sabun_tbl(
+kisyu_code integer NOT NULL comment '騎手コード',
+kisyu_fukusyou DECIMAL(10,9) comment '騎手複勝率',
+kisyu_mei varchar(40) comment '騎手名',
+primary key (kisyu_code)
+)ENGINE = Innodb DEFAULT CHARSET = UTF8
+comment='騎手差分テーブル';
+
+DROP TABLE IF EXISTS keibadb.chokuzen_tbl;
+CREATE TABLE keibadb.sampling_chokuzen_tbl(
+race_key integer comment 'レースキー',
+umaban integer comment '馬番',
+kinryou integer comment '斤量',
+bataijyu integer comment '馬体重',
+taijyu_zougen integer comment '体重増減',
+primary key (race_key,umaban) )ENGINE = Innodb DEFAULT CHARSET = UTF8
+comment='直前情報テーブル';
+
+DROP TABLE IF EXISTS keibadb.bangumi_tbl;
+CREATE TABLE keibadb.sampling_bangumi_tbl(
+race_key integer comment 'レースキー',
+syussou_tousuu integer comment '出走頭数',
+syoukin integer comment '1着賞金',
+primary key (race_key))ENGINE = Innodb DEFAULT CHARSET = UTF8
+comment='番組テーブル';
