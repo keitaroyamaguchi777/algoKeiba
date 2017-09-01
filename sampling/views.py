@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from sampling.models import Uma_kihon
+from sampling.models import Bangumi
 from sampling.forms import UmaKihonForm
 
 def uma_kihon_list(request):
@@ -36,3 +37,10 @@ def uma_kihon_del(request, uma_kihon_id):
     umaKihon = get_object_or_404(Uma_kihon, pk=uma_kihon_id)
     umaKihon.delete()
     return redirect('sampling:uma_kihon_list')
+
+def bangumi_list(request):
+    """番組情報の一覧"""
+    bangumi = Bangumi.objects.all().order_by('race_key')
+    return render(request,
+                  'sampling/bangumi_list.html',
+                  {'bangumi': bangumi})

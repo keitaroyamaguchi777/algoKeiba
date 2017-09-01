@@ -88,7 +88,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'keibadb',
         'USER': 'root',
-        'PASSWORD':'password01',
+        'PASSWORD':'admin',
         'HOST':'',
     }
 }
