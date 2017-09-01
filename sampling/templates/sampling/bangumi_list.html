@@ -1,0 +1,36 @@
+
+{% extends "base.html" %}
+
+{% block title %}馬基本情報の一覧{% endblock title %}
+
+{% block extrahead %}
+<style>
+table {
+  margin-top: 8px;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+    <h3 class="page-header">番組の一覧</h3>
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>レースキー</th>
+          <th>出走頭数</th>
+          <th>1着賞金</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for bangumi in bangumi %}
+        <tr>
+          <td>{{ bangumi.race_key }}</td>
+          <td>{{ bangumi.syussou_tousuu }}</td>
+          <td>{{ bangumi.syoukin }}</td>
+          <td>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+{% endblock content %}
