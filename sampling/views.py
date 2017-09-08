@@ -5,6 +5,7 @@ from sampling.models import Bangumi
 from sampling.models import Tyokuzen
 from sampling.models import Zensou
 from sampling.models import Kishu_Sabun
+from sampling.models import Kyousouba
 from sampling.forms import UmaKihonForm
 
 def uma_kihon_list(request):
@@ -68,3 +69,10 @@ def kishu_sabun_list(request):
     return render(request,
                   'sampling/kishu_sabun_list.html',
                   {'kishu_sabun': kishu_sabun})
+
+def kyousouba_list(request):
+    """騎手情報の一覧"""
+    kyousouba = Kyousouba.objects.all().order_by('id')
+    return render(request,
+                  'sampling/kyousouba_list.html',
+                  {'kyousouba': kyousouba})

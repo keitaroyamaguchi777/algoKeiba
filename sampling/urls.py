@@ -15,5 +15,6 @@ urlpatterns = [
     url(r'^zensou/$', views.zensou_list, name='zensou_list'),   # 一覧
     #騎手
     url(r'^kishu_sabun/$', views.kishu_sabun_list, name='kishu_sabun_list'),   # 一覧
-               
+    #競走馬
+    url(r'^kyousouba/$', views.kyousouba_list, name='kyousouba_list'),   # 一覧
 ]
