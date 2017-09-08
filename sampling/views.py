@@ -4,6 +4,7 @@ from sampling.models import Uma_kihon
 from sampling.models import Bangumi
 from sampling.models import Tyokuzen
 from sampling.models import Zensou
+from sampling.models import Kishu_Sabun
 from sampling.forms import UmaKihonForm
 
 def uma_kihon_list(request):
@@ -55,8 +56,15 @@ def tyokuzen_list(request):
                   {'tyokuzen': tyokuzen})
 
 def zensou_list(request):
-    """直前情報の一覧"""
+    """前走情報の一覧"""
     zensou = Zensou.objects.all().order_by('seiseki_key')
     return render(request,
                   'sampling/zensou_list.html',
                   {'zensou': zensou})
+
+def kishu_sabun_list(request):
+    """騎手情報の一覧"""
+    kishu_sabun = Kishu_Sabun.objects.all().order_by('id')
+    return render(request,
+                  'sampling/kishu_sabun_list.html',
+                  {'kishu_sabun': kishu_sabun})

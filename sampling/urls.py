@@ -13,4 +13,7 @@ urlpatterns = [
     url(r'^tyokuzen/$', views.tyokuzen_list, name='tyokuzen_list'),   # 一覧
     #前走
     url(r'^zensou/$', views.zensou_list, name='zensou_list'),   # 一覧
+    #騎手
+    url(r'^kishu_sabun/$', views.kishu_sabun_list, name='kishu_sabun_list'),   # 一覧
+               
 ]
