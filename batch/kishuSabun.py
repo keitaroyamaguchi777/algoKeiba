@@ -1,16 +1,12 @@
 import util
+import MySQLdb
+from database import Keibadb
 
 print("file_bangumi_BAC.txt")
-with open("input/file_kishu_sabun_KSA.txt", "r", encoding="EUC-JP") as input:
-
-    import MySQLdb
+with open("input/file_kishu_sabun_KSA.txt", "r", encoding="cp932") as input:
     try:
-        cnn = MySQLdb.connect(host='localhost',
-                              port=3306,
-                              user='root',
-                              passwd='password01',
-                              db='keibadb',
-                              charset="utf8")
+        db = Keibadb()
+        cnn = db.connect()
 
         for line in input.readlines():
             if len(line.strip()) != 0:
@@ -48,9 +44,7 @@ with open("input/file_kishu_sabun_KSA.txt", "r", encoding="EUC-JP") as input:
                     print("")
                     print("%s" % (row[0]))
 
-        cnn.commit()
-        cur.close()
-        cnn.close()
+        db.commitAndClose(cnn)
 
     except MySQLdb.Error as e:
             print('MySQLdb.Error: ', e)

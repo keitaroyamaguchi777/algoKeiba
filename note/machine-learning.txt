@@ -1,0 +1,10 @@
+pip3 install scikit-learn # モデル
+pip3 install numpy  # 線形代数
+pip3 install scipy  # 数式処理
+pip3 install matplotlib   # 描画
+pip3 install pandas  # データ操作
+pip3 install chainer # ニューラルネットワーク
+pip3 install jupyter
+
+
+atom -> Preferences(環境設定) -> Install -> terminal -> platformio-ide-terminal

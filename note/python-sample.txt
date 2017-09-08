@@ -1,0 +1,84 @@
+
+read() – ファイルを全て読み込み、その文字列データに対して処理を行う
+readlines() – ファイルを全て読み込み、1行毎に処理を行う
+readline() – 1行毎に読み込み、その処理を繰り返す
+
+-------------------------------------------------------------------------
+
+f = open('text.txt')
+data1 = f.read()  # ファイル終端まで全て読んだデータを返す
+f.close()
+print type(data1) # 文字列データ
+
+lines1 = data1.split('n') # 改行で区切る(改行文字そのものは戻り値のデータには含まれない)
+print type(lines1)
+for line in lines1:
+    print line
+print
+
+
+-------------------------------------------------------------------------
+f = open('text.txt')
+lines2 = f.readlines() # 1行毎にファイル終端まで全て読む(改行文字も含まれる)
+f.close()
+# lines2: リスト。要素は1行の文字列データ
+
+for line in lines2:
+    print line,
+print
+
+-------------------------------------------------------------------------
+
+f = open('text.txt')
+line = f.readline() # 1行を文字列として読み込む(改行文字も含まれる)
+
+while line:
+    print line
+    line = f.readline()
+f.close
+
+-------------------------------------------------------------------------
+DateTime => TimeStamp変換
+
+datetime/timeをimportしてdatetimeにてDateTime型のFormatを指定し、time.mktimeでTimeStampを取得します。
+
+#! /usr/bin/env python
+# -*- coding:utf-8 -*-
+from datetime import *
+import time
+dtime = "2013-06-15 17:53:13"
+print "TIMESTAMP = " + str( int( time.mktime( datetime.strptime( dtime, "%Y-%m-%d %H:%M:%S" ).timetuple() ) ) )
+# 結果
+# TIMESTAMP = 1371286393
+TimeStamp => DateTime変換
+
+-------------------------------------------------------------------------
+datetimeをimportしてfromtimestamp関数でDateTimeに変換します。
+
+# -*- coding:utf-8 -*-
+from datetime import *
+utime = 1371286393
+print "DATETIME = " + str( datetime.fromtimestamp( utime ) )
+# 結果
+# DATETIME = 2013-06-15 17:53:13
+
+-------------------------------------------------------------------------
+文字列から日付(datetime)
+from datetime import datetime as dt
+
+tstr = '2012-12-29 13:49:37'
+tdatetime = dt.strptime(tstr, '%Y-%m-%d %H:%M:%S')
+
+文字列から日付(date)
+import datetime
+
+tstr = '2012-12-29 13:49:37'
+tdatetime = datetime.datetime.strptime(tstr, '%Y-%m-%d %H:%M:%S')
+tdate = datetime.date(tdatetime.year, tdatetime.month, tdatetime.day)
+
+
+日付から文字列
+from datetime import datetime as dt
+
+tdatetime = dt.now()
+tstr = tdatetime.strftime('%Y/%m/%d')

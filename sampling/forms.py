@@ -6,4 +6,4 @@ class UmaKihonForm(ModelForm):
     """書籍のフォーム"""
     class Meta:
         model = Uma_kihon
-        fields = ('id', 'race_key', 'blad_int', 'age', 'sex',)
+        fields = ('blad_int', 'name', 'birthday', 'sex',)

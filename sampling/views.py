@@ -5,15 +5,15 @@ from sampling.forms import UmaKihonForm
 
 def uma_kihon_list(request):
     """馬基本情報の一覧"""
-    umaKihon = Uma_kihon.objects.all().order_by('id')
+    umaKihon = Uma_kihon.objects.all().order_by('blad_int')
     return render(request,
                   'sampling/uma_kihon_list.html',
                   {'uma_kihon': umaKihon})
 
-def uma_kihon_edit(request, uma_kihon_id=None):
+def uma_kihon_edit(request, blad_int=None):
     """馬基本情報の編集"""
-    if uma_kihon_id:   # book_id 指定 (修正時)
-        umaKihon = get_object_or_404(Uma_kihon, pk=uma_kihon_id)
+    if blad_int:   # id 指定 (修正時)
+        umaKihon = get_object_or_404(Uma_kihon, pk=blad_int)
     else:         # (追加時)
         umaKihon = Uma_kihon()
 
@@ -29,10 +29,10 @@ def uma_kihon_edit(request, uma_kihon_id=None):
         form = UmaKihonForm(instance=umaKihon)
 
     return render(request, 'sampling/uma_kihon_edit.html',
-            dict(form=form, uma_kihon_id=uma_kihon_id))
+            dict(form=form, blad_int=blad_int))
 
-def uma_kihon_del(request, uma_kihon_id):
+def uma_kihon_del(request, blad_int):
     """馬基本情報の削除"""
-    umaKihon = get_object_or_404(Uma_kihon, pk=uma_kihon_id)
+    umaKihon = get_object_or_404(Uma_kihon, pk=blad_int)
     umaKihon.delete()
     return redirect('sampling:uma_kihon_list')

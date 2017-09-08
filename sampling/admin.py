@@ -1,12 +1,12 @@
 from django.contrib import admin
-from sampling.models import Uma_kihon,Zensou,Kyousouba,Kishu_Sabun,Tyokuzen,Bangumi
+from sampling.models import Uma_kihon,Zensou,Kyousouba,Kyousouba_Extend,Kishu_Sabun,Tyokuzen,Bangumi
 
 # Register your models here.
 
 
 class UmaKihonAdmin(admin.ModelAdmin):
-    list_display = ('id', 'race_key', 'blad_int', 'age', 'sex',)
-    list_display_links = ('id',)
+    list_display = ('blad_int', 'name', 'birthday', 'sex',)
+    list_display_links = ('blad_int',)
 admin.site.register(Uma_kihon, UmaKihonAdmin)
 
 
@@ -18,10 +18,17 @@ admin.site.register(Zensou, ZensouAdmin)
 
 
 class KyousoubaAdmin(admin.ModelAdmin):
-    list_display = ('race_key', 'blad_int', 'umaban',
-            'zensou_seiseki_key', 'zensou_race_key', 'kyakushitu',)
+    list_display = ('race_key', 'umaban', 'blad_int',
+            'kyakushitu', 'zensou_seiseki_key', 'zensou_race_key',)
     list_display_links = ('race_key',)
 admin.site.register(Kyousouba, KyousoubaAdmin)
+
+class KyousoubaExtendAdmin(admin.ModelAdmin):
+    list_display = ('race_key', 'umaban',
+            'jra_seiseki_1chaku', 'jra_seiseki_2chaku',
+            'jra_seiseki_3chaku', 'jra_seiseki_chakugai')
+    list_display_links = ('race_key',)
+admin.site.register(Kyousouba_Extend, KyousoubaExtendAdmin)
 
 
 class KishuSabunAdmin(admin.ModelAdmin):

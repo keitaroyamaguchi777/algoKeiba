@@ -1,10 +1,9 @@
-DROP TABLE IF EXISTS keibadb.sampling_horse_kihon_tbl;
+DROP TABLE IF EXISTS keibadb.sampling_uma_kihon_tbl;
 CREATE TABLE keibadb.uma_kihon_tbl(
-race_key integer comment 'レースキー',
 blad_int integer comment '血統登録番号',
 age integer comment '馬年齢',
 sex integer comment '性別',
-primary key (race_key,blad_int))ENGINE = Innodb DEFAULT CHARSET = UTF8
+primary key (blad_int))ENGINE = Innodb DEFAULT CHARSET = UTF8
 comment='馬基本テーブル';
 
 DROP TABLE IF EXISTS keibadb.sampling_zensou_tbl;
@@ -17,10 +16,9 @@ zensou_3ftm_after integer comment '前走後3Fタイム',
 primary key (seiseki_key))ENGINE = Innodb DEFAULT CHARSET = UTF8
 comment='前走テーブル';
 
-DROP TABLE IF EXISTS keibadb.sampling_kyousouba_tbl;
+DROP TABLE IF EXISTS keibadb.sampling_kyousouba;
 CREATE TABLE keibadb.kyousouba_tbl(
 race_key integer comment 'レースキー',
-blad_int integer comment '血統登録番号',
 umaban integer comment '馬番',
 zensou_seiseki_key integer comment '前走競争成績キー',
 zensou_race_key integer comment '前走レースキー',
@@ -28,7 +26,17 @@ kyakushitu Integer comment '脚質',
 primary key (blad_int,race_key,umaban) )ENGINE = Innodb DEFAULT CHARSET = UTF8
 comment='競争馬テーブル';
 
-DROP TABLE IF EXISTS keibadb.sampling_kishu_sabun_tbl;
+DROP TABLE IF EXISTS keibadb.sampling_kyousouba_extend;
+CREATE TABLE keibadb.kyousouba_tbl(
+race_key integer comment 'レースキー',
+umaban integer comment '馬番',
+zensou_seiseki_key integer comment '前走競争成績キー',
+zensou_race_key integer comment '前走レースキー',
+kyakushitu Integer comment '脚質',
+primary key (blad_int,race_key,umaban) )ENGINE = Innodb DEFAULT CHARSET = UTF8
+comment='競争馬拡張テーブル';
+
+DROP TABLE IF EXISTS keibadb.sampling_kishu_sabun;
 CREATE TABLE keibadb.kishu_sabun_tbl(
 kisyu_code integer NOT NULL comment '騎手コード',
 kisyu_fukusyou DECIMAL(10,9) comment '騎手複勝率',

@@ -3,13 +3,10 @@ from django.db import models
 
 class Uma_kihon(models.Model):
     """馬基本テーブル"""
-    race_key = models.IntegerField('レースキー')
-    blad_int = models.IntegerField('血統登録番号')
-    age      = models.IntegerField('馬年齢')
+    blad_int = models.IntegerField('血統登録番号', primary_key=True)
+    name     = models.CharField('馬名', max_length=54, blank=True)
+    birthday = models.DateTimeField('生年月日')
     sex      = models.IntegerField('性別')
-    class Meta:
-        unique_together=(("race_key","blad_int"))
-
 
 class Zensou(models.Model):
     """前走テーブル"""
@@ -19,16 +16,25 @@ class Zensou(models.Model):
     zensou_3ftm_before = models.IntegerField('前走前3Fタイム')
     zensou_3ftm_after  = models.IntegerField('前走後3Fタイム')
 
-
 class Kyousouba(models.Model):
     """競走馬テーブル"""
     race_key = models.IntegerField('レースキー')
-    blad_int = models.IntegerField('血統登録番号')
     umaban   = models.IntegerField('馬番')
-    zensou_seiseki_key = models.IntegerField('前走競争成績キー')
-    zensou_race_key    = models.IntegerField('前走レースキー')
+    blad_int = models.IntegerField('血統登録番号')
     kyakushitu         = models.IntegerField('脚質')
+    zensou_seiseki_key = models.CharField('前走競争成績キー', max_length=16, blank=True)
+    zensou_race_key    = models.CharField('前走レースキー', max_length=8, blank=True)
+    class Meta:
+        unique_together=(("race_key","umaban"))
 
+class Kyousouba_Extend(models.Model):
+    """競走馬拡張テーブル"""
+    race_key = models.IntegerField('レースキー')
+    umaban   = models.IntegerField('馬番')
+    jra_seiseki_1chaku = models.IntegerField('JRA成績1着')
+    jra_seiseki_2chaku = models.IntegerField('JRA成績2着')
+    jra_seiseki_3chaku = models.IntegerField('JRA成績3着')
+    jra_seiseki_chakugai = models.IntegerField('JRA成績着外')
     class Meta:
         unique_together=(("race_key","umaban"))
 

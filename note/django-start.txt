@@ -20,5 +20,22 @@ python3 manage.py createsuperuser
 ・起動
 python3 manage.py runserver 0.0.0.0:8000
 
-・アプリケーション生成 
+・アプリケーション生成
 python manage.py startapp [app_name]
+
+
+pip3 install mysqlclient
+pip3 install PyMySQL
+
+
+# index 張り替えエラー
+# show create table sampling_uma_kihon;
+# ALTER TABLE sampling_uma_kihon DROP INDEX sampling_uma_kihon_race_key_611e748c_uniq;
+
+drop table sampling_bangumi;
+drop table sampling_kishu_sabun;
+drop table sampling_kyousouba;
+drop table sampling_tyokuzen;
+drop table sampling_uma_kihon;
+drop table sampling_zensou;
+delete from django_migrations where app='sampling';

@@ -6,7 +6,7 @@
 {% block content %}
     <h3 class="page-header">馬基本情報の編集</h3>
     {% if book_id %}
-    <form action="{% url 'sampling:uma_kihon_mod' uma_kihon_list_id=uma_kihon_list_id %}" method="post" class="form-horizontal" role="form">
+    <form action="{% url 'sampling:uma_kihon_mod' blad_int=blad_int %}" method="post" class="form-horizontal" role="form">
     {% else %}
     <form action="{% url 'sampling:uma_kihon_add' %}" method="post" class="form-horizontal" role="form">
     {% endif %}
