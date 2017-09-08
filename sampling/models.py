@@ -45,9 +45,6 @@ class Kishu_Sabun(models.Model):
     kisyu_mei  = models.CharField('騎手名', max_length=8, blank=True)
     kisyu_fukusyou = models.DecimalField('騎手複勝率', max_digits=10, decimal_places=9)
 
-    def __str__(self):
-        return self.kisyuMei
-
 
 class Tyokuzen(models.Model):
     """直前情報テーブル"""
