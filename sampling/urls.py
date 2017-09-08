@@ -9,6 +9,8 @@ urlpatterns = [
     url(r'^umakihon/del/(?P<uma_kihon_id>\d+)/$', views.uma_kihon_del, name='uma_kihon_del'),   # 削除
     #番組
     url(r'^bangumi/$', views.bangumi_list, name='bangumi_list'),   # 一覧
-    #番組
+    #直前情報
     url(r'^tyokuzen/$', views.tyokuzen_list, name='tyokuzen_list'),   # 一覧
+    #前走
+    url(r'^zensou/$', views.zensou_list, name='zensou_list'),   # 一覧
 ]

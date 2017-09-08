@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from sampling.models import Uma_kihon
 from sampling.models import Bangumi
 from sampling.models import Tyokuzen
+from sampling.models import Zensou
 from sampling.forms import UmaKihonForm
 
 def uma_kihon_list(request):
@@ -52,3 +53,10 @@ def tyokuzen_list(request):
     return render(request,
                   'sampling/tyokuzen_list.html',
                   {'tyokuzen': tyokuzen})
+
+def zensou_list(request):
+    """直前情報の一覧"""
+    zensou = Zensou.objects.all().order_by('seiseki_key')
+    return render(request,
+                  'sampling/zensou_list.html',
+                  {'zensou': zensou})
