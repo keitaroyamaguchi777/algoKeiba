@@ -1,5 +1,5 @@
 from django.contrib import admin
-from sampling.models import Uma_kihon,Zensou,Kyousouba,Kyousouba_Extend,Kishu_Sabun,Tyokuzen,Bangumi
+from sampling.models import Uma_kihon,Zensou,Kyousouba,Kyousouba_Extend,Kishu_Sabun,Chokuzen,Bangumi
 
 # Register your models here.
 
@@ -32,16 +32,16 @@ admin.site.register(Kyousouba_Extend, KyousoubaExtendAdmin)
 
 
 class KishuSabunAdmin(admin.ModelAdmin):
-    list_display = ('kisyu_code', 'kisyu_fukusyou', 'kisyu_mei',)
-    list_display_links = ('kisyu_code',)
+    list_display = ('kishu_code', 'kishu_fukusyou', 'kishu_mei',)
+    list_display_links = ('kishu_code',)
 admin.site.register(Kishu_Sabun, KishuSabunAdmin)
 
 
-class TyokuzenAdmin(admin.ModelAdmin):
-    list_display = ('race_key', 'umaban', 'kinryou',
+class ChokuzenAdmin(admin.ModelAdmin):
+    list_display = ('race_key', 'umaban', 'kishu_code', 'kinryou',
             'bataijyu', 'taijyu_zougen',)
     list_display_links = ('race_key',)
-admin.site.register(Tyokuzen, TyokuzenAdmin)
+admin.site.register(Chokuzen, ChokuzenAdmin)
 
 
 class BangumiAdmin(admin.ModelAdmin):

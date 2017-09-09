@@ -8,7 +8,7 @@ comment='馬基本テーブル';
 
 DROP TABLE IF EXISTS keibadb.sampling_zensou_tbl;
 CREATE TABLE keibadb.zensou_tbl(
-seiseki_key integer comment '競争成績キー',
+seiseki_key varchar(16) comment '競争成績キー',
 zensou_kyori integer comment '前走距離',
 zensou_tm_sa integer comment '前走タイム差',
 zensou_3ftm_before integer comment '前走前3Fタイム',
@@ -20,8 +20,8 @@ DROP TABLE IF EXISTS keibadb.sampling_kyousouba;
 CREATE TABLE keibadb.kyousouba_tbl(
 race_key integer comment 'レースキー',
 umaban integer comment '馬番',
-zensou_seiseki_key integer comment '前走競争成績キー',
-zensou_race_key integer comment '前走レースキー',
+zensou_seiseki_key varchar(16) comment '前走競争成績キー',
+zensou_race_key varchar(8) comment '前走レースキー',
 kyakushitu Integer comment '脚質',
 primary key (blad_int,race_key,umaban) )ENGINE = Innodb DEFAULT CHARSET = UTF8
 comment='競争馬テーブル';

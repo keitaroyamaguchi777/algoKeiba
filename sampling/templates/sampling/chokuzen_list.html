@@ -18,19 +18,21 @@ table {
         <tr>
           <th>レースキー</th>
           <th>馬番</th>
+          <th>騎手コード</th>
           <th>斤量</th>
           <th>馬体重</th>
           <th>体重増減</th>
         </tr>
       </thead>
       <tbody>
-        {% for tyokuzen in tyokuzen %}
+        {% for chokuzen in chokuzen %}
         <tr>
-          <td>{{ tyokuzen.race_key }}</td>
-          <td>{{ tyokuzen.umaban }}</td>
-          <td>{{ tyokuzen.kinryou }}</td>
-          <td>{{ tyokuzen.bataijyu }}</td>
-          <td>{{ tyokuzen.taijyu_zougen }}</td>
+          <td>{{ chokuzen.race_key }}</td>
+          <td>{{ chokuzen.umaban }}</td>
+          <td>{{ chokuzen.kishu_code }}</td>
+          <td>{{ chokuzen.kinryou }}</td>
+          <td>{{ chokuzen.bataijyu }}</td>
+          <td>{{ chokuzen.taijyu_zougen }}</td>
           <td>
           </td>
         </tr>

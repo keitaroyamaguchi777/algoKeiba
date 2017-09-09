@@ -35,7 +35,27 @@ pip3 install PyMySQL
 drop table sampling_bangumi;
 drop table sampling_kishu_sabun;
 drop table sampling_kyousouba;
+drop table sampling_kyousouba_extend;
 drop table sampling_tyokuzen;
 drop table sampling_uma_kihon;
 drop table sampling_zensou;
 delete from django_migrations where app='sampling';
+
+
+truncate table sampling_bangumi;
+truncate table sampling_kishu_sabun;
+truncate table sampling_kyousouba;
+truncate table sampling_kyousouba_extend;
+truncate table sampling_chokuzen;
+truncate table sampling_uma_kihon;
+truncate table sampling_zensou;
+
+
+select
+(select count(*) from sampling_bangumi) AS bangumi
+,(select count(*) from sampling_kishu_sabun) AS kishu_sabun
+,(select count(*) from sampling_kyousouba) AS kyousouba
+,(select count(*) from sampling_kyousouba_extend) AS kyousouba_extend
+,(select count(*) from sampling_chokuzen) AS chokuzen
+,(select count(*) from sampling_uma_kihon) AS uma_kihon
+,(select count(*) from sampling_zensou) AS zensou;

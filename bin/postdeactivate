@@ -1,3 +1,4 @@
 #!/bin/bash
 # This hook is sourced after this virtualenv is deactivated.
-
+export PYTHONPATH=$OLD_PYTHONPATH
+unset OLD_PYTHONPATH
