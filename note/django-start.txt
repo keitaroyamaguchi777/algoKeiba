@@ -1,5 +1,26 @@
 workon venv
 
+sudo pip3 install mysqlclient
+sudo pip3 install PyMySQL
+pip install django==1.9.2
+pip install django-bootstrap-form
+--- cloud 9  ------------------------
+mysql-ctl start
+mysql-ctl cli
+
+python manage.py migrate
+
+settings.py
+ALLOWED_HOSTS = ['workspace-name.c9users.io']
+
+python manage.py runserver $IP:$PORT
+----------------------------------
+select HOST,User,Password from mysql.user;
+CREATE DATABASE keibadb CHARACTER SET utf8;
+CREATE USER admin IDENTIFIED BY 'password01';
+update mysql.user set password=password('admin') where user = 'root';
+flush privileges;
+
 ・プロジェクト生成
 django-admin.py startproject [project_name]
 
@@ -24,10 +45,6 @@ python3 manage.py runserver 0.0.0.0:8000
 python manage.py startapp [app_name]
 
 
-pip3 install mysqlclient
-pip3 install PyMySQL
-
-
 # index 張り替えエラー
 # show create table sampling_uma_kihon;
 # ALTER TABLE sampling_uma_kihon DROP INDEX sampling_uma_kihon_race_key_611e748c_uniq;
@@ -36,7 +53,7 @@ drop table sampling_bangumi;
 drop table sampling_kishu_sabun;
 drop table sampling_kyousouba;
 drop table sampling_kyousouba_extend;
-drop table sampling_tyokuzen;
+drop table sampling_chokuzen;
 drop table sampling_uma_kihon;
 drop table sampling_zensou;
 delete from django_migrations where app='sampling';
@@ -59,3 +76,20 @@ select
 ,(select count(*) from sampling_chokuzen) AS chokuzen
 ,(select count(*) from sampling_uma_kihon) AS uma_kihon
 ,(select count(*) from sampling_zensou) AS zensou;
+
+
+
+
+-- virtualenv ---------------------------------------------------------
+sudo pip install virtualenv virtualenvwrapper --ignore-installed six
+
+echo "export WORKON_HOME=$HOME/.virtualenvs" >> ~/.bashrc 
+echo "source /usr/local/bin/virtualenvwrapper.sh >>" ~/.bashrc
+.bash_profile
+if [ -f ~/.bashrc ]; then
+    . ~/.bashrc
+fi
+source ~/.bash_profile
+source ~/.bashrc
+mkvirtualenv --no-site-package --python `which python3` venv
+----------------------------------------------------------------------

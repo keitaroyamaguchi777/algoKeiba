@@ -3,11 +3,13 @@ from django.db import models
 
 class Uma_kihon(models.Model):
     """馬基本テーブル"""
-    blad_int = models.IntegerField('血統登録番号', primary_key=True)
+    history = models.CharField('作成年月日', max_length=8, default='00000000')
+    blad_int = models.IntegerField('血統登録番号', default=0)
     name     = models.CharField('馬名', max_length=54, blank=True)
     birthday = models.DateTimeField('生年月日')
     sex      = models.IntegerField('性別')
-
+    class Meta:
+        unique_together=(("history","blad_int"))
 
 class Zensou(models.Model):
     """前走テーブル"""
