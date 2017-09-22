@@ -5,7 +5,7 @@ from datetime import datetime as dt
 
 print("file_uma_kihon_UKC.txt")
 with open("input/file_kyousouba_KYG.txt", "r", encoding="cp932") as input:
-
+    try:
         db = Keibadb()
         cnn = db.connect()
 
