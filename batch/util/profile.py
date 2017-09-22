@@ -8,13 +8,18 @@ def now(birthday):
 
 def fetchDate(yymmdd):
     print("yymmdd : " + yymmdd)
-    ymd = re.search("[0-9]{6}",yymmdd).group()
     dateStr = "";
+    ret = re.search("[0-9]{6}",yymmdd)
+
+    if ret == None:
+        return dateStr
+
+    ymd = re.search("[0-9]{6}",yymmdd).group()
     year = ymd[0:2]
     if int(year) <= 99 :
         dateStr = "19" + ymd
     else :
         dateStr = "20" + ymd
-    
+
     # return dt.strptime(dateStr, '%Y%m%d')
     return dateStr
