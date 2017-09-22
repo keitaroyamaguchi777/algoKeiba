@@ -1,0 +1,36 @@
+
+{% extends "base.html" %}
+
+{% block title %}騎手情報の一覧{% endblock title %}
+
+{% block extrahead %}
+<style>
+table {
+  margin-top: 8px;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+    <h3 class="page-header">騎手情報の一覧</h3>
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>騎手コード</th>
+          <th>騎手名</th>
+          <th>騎手複勝率</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for kishu_sabun in kishu_sabun %}
+        <tr>
+          <td>{{ kishu_sabun.kisyu_code }}</td>
+          <td>{{ kishu_sabun.kisyu_mei }}</td>
+          <td>{{ kishu_sabun.kisyu_fukusyou }}</td>
+          <td>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+{% endblock content %}

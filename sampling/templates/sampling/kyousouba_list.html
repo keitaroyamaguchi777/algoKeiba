@@ -1,0 +1,42 @@
+
+{% extends "base.html" %}
+
+{% block title %}競走馬情報の一覧{% endblock title %}
+
+{% block extrahead %}
+<style>
+table {
+  margin-top: 8px;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+    <h3 class="page-header">競走馬情報の一覧</h3>
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>レースキー</th>
+          <th>血統登録番号</th>
+          <th>馬番</th>
+          <th>前走競走成績キー</th>
+          <th>前走レースキー</th>
+          <th>脚質</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for kyousouba in kyousouba %}
+        <tr>
+          <td>{{ kyousouba.race_key }}</td>
+          <td>{{ kyousouba.blad_int }}</td>
+          <td>{{ kyousouba.umaban }}</td>
+          <td>{{ kyousouba.zensou_seiseki_key }}</td>
+          <td>{{ kyousouba.zensou_race_key }}</td>
+          <td>{{ kyousouba.kyakushitu }}</td>
+          <td>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+{% endblock content %}
