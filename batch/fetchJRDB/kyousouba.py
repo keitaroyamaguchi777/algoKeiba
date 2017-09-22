@@ -9,7 +9,7 @@ from datetime import datetime as dt
 
 def fetch(filename):
     print("file_kyousouba_KYG : " + filename)
-    make = profile.fetchDate(filename)
+    history = profile.fetchDate(filename)
     with open(filename, "r", encoding="cp932") as input:
         try:
             db = Keibadb()
@@ -17,9 +17,9 @@ def fetch(filename):
 
             cur = cnn.cursor()
             insert_stmt = ("""INSERT INTO sampling_kyousouba(
-                race_key, umaban, blad_int,
+                history, race_key, umaban, blad_int,
                 kyakushitu, zensou_seiseki_key, zensou_race_key)
-                VALUES (%s,%s,%s,%s,%s,%s)""")
+                VALUES (%s,%s,%s,%s,%s,%s,%s)""")
 
             for line in input.readlines():
                 if len(line.strip()) != 0:
@@ -38,7 +38,7 @@ def fetch(filename):
                     zensou_race_key = encoding.bytelen(rec, 283, 291)
                     # print("zensou_race_key   : " + str(zensou_race_key))
 
-                    data = (race_key, umaban, blad_int, kyakushitu,
+                    data = (history, race_key, umaban, blad_int, kyakushitu,
                             zensou_seiseki_key, zensou_race_key)
                     cur.execute(insert_stmt, data)
                     rows = cur.fetchall()

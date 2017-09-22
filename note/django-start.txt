@@ -68,14 +68,14 @@ truncate table sampling_uma_kihon;
 truncate table sampling_zensou;
 
 
-select
-(select count(*) from sampling_bangumi) AS bangumi
-,(select count(*) from sampling_kishu_sabun) AS kishu_sabun
-,(select count(*) from sampling_kyousouba) AS kyousouba
-,(select count(*) from sampling_kyousouba_extend) AS kyousouba_extend
-,(select count(*) from sampling_chokuzen) AS chokuzen
-,(select count(*) from sampling_uma_kihon) AS uma_kihon
-,(select count(*) from sampling_zensou) AS zensou;
+  select
+  (select count(*) from sampling_bangumi) AS bangumi
+  ,(select count(*) from sampling_kishu_sabun) AS kishu_sabun
+  ,(select count(*) from sampling_kyousouba) AS kyousouba
+  ,(select count(*) from sampling_kyousouba_extend) AS kyousouba_extend
+  ,(select count(*) from sampling_chokuzen) AS chokuzen
+  ,(select count(*) from sampling_uma_kihon) AS uma_kihon
+  ,(select count(*) from sampling_zensou) AS zensou;
 
 
 
@@ -83,7 +83,7 @@ select
 -- virtualenv ---------------------------------------------------------
 sudo pip install virtualenv virtualenvwrapper --ignore-installed six
 
-echo "export WORKON_HOME=$HOME/.virtualenvs" >> ~/.bashrc 
+echo "export WORKON_HOME=$HOME/.virtualenvs" >> ~/.bashrc
 echo "source /usr/local/bin/virtualenvwrapper.sh >>" ~/.bashrc
 .bash_profile
 if [ -f ~/.bashrc ]; then

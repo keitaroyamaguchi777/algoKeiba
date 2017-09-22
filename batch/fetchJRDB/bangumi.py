@@ -7,14 +7,14 @@ from util.database import Keibadb
 
 def fetch(filename):
     print("file_bangumi_BAC : " + filename)
-    make = profile.fetchDate(filename)
+    history = profile.fetchDate(filename)
     with open(filename, "r", encoding="cp932") as input:
         try:
             db = Keibadb()
             cnn = db.connect()
             cur = cnn.cursor()
 
-            insert_stmt = ("INSERT INTO sampling_bangumi(race_key,syussou_tousuu,syoukin) VALUES (%s,%s,%s)")
+            insert_stmt = ("INSERT INTO sampling_bangumi(history, race_key,syussou_tousuu,syoukin) VALUES (%s,%s,%s,%s)")
 
             for line in input.readlines():
                 rec = line[0:169]
@@ -33,7 +33,7 @@ def fetch(filename):
                     syoukin = encoding.bytelen(rec, 125, 130)
                     # print("syoukin : " + syoukin)
 
-                    data = (key,tousuu,syoukin)
+                    data = (history, key,tousuu,syoukin)
                     cur.execute(insert_stmt, data)
                     rows = cur.fetchall()
 

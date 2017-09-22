@@ -8,16 +8,16 @@ from datetime import datetime as dt
 
 def fetch(filename):
     print("file_chokuzen_TYB : " + filename)
-    make = profile.fetchDate(filename)
+    history = profile.fetchDate(filename)
     with open(filename, "r", encoding="cp932") as input:
         try:
             db = Keibadb()
             cnn = db.connect()
             cur = cnn.cursor()
             insert_stmt = ("""INSERT INTO sampling_chokuzen(
-                race_key, umaban, kishu_code,
+                history, race_key, umaban, kishu_code,
                 kinryou, bataijyu, taijyu_zougen)
-                VALUES (%s,%s,%s,%s,%s,%s)""")
+                VALUES (%s,%s,%s,%s,%s,%s,%s)""")
 
             for line in input.readlines():
                 if len(line.strip()) != 0:
@@ -44,7 +44,7 @@ def fetch(filename):
                         taijyu_zougen = ""
                     # print("taijyu_zougen  : " + str(taijyu_zougen))
 
-                    data = (race_key, umaban, kishu_code,
+                    data = (history, race_key, umaban, kishu_code,
                             kinryou, bataijyu, taijyu_zougen)
                     cur.execute(insert_stmt, data)
                     rows = cur.fetchall()

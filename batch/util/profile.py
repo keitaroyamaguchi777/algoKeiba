@@ -7,7 +7,7 @@ def now(birthday):
     return int((today - birth) / 10000)
 
 def fetchDate(yymmdd):
-    print("yymmdd : " + yymmdd)
+    # print("yymmdd : " + yymmdd)
     dateStr = "";
     ret = re.search("[0-9]{6}",yymmdd)
 

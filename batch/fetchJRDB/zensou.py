@@ -9,17 +9,17 @@ from datetime import datetime as dt
 
 def fetch(filename):
     print("file_zensou_ZEC : " + filename)
-    make = profile.fetchDate(filename)
+    history = profile.fetchDate(filename)
     with open(filename, "r", encoding="cp932") as input:
         try:
             db = Keibadb()
             cnn = db.connect()
             cur = cnn.cursor()
             insert_stmt = ("""INSERT INTO sampling_zensou(
-                seiseki_key, zensou_kyori, zensou_tm_sa,
+                history, seiseki_key, zensou_kyori, zensou_tm_sa,
                 zensou_3ftm_before, zensou_3ftm_after)
-                VALUES (%s,%s,%s,%s,%s)""")
-                        
+                VALUES (%s,%s,%s,%s,%s,%s)""")
+
             for line in input.readlines():
                 if len(line.strip()) != 0:
                     rec = line
@@ -50,7 +50,7 @@ def fetch(filename):
                     # print("zensou_3ftm_after   : " + str(zensou_3ftm_after))
 
 
-                    data = (seiseki_key, zensou_kyori, zensou_tm_sa,
+                    data = (history, seiseki_key, zensou_kyori, zensou_tm_sa,
                             zensou_3ftm_before, zensou_3ftm_after)
                     cur.execute(insert_stmt, data)
                     rows = cur.fetchall()
