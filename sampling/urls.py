@@ -10,7 +10,7 @@ urlpatterns = [
     #番組
     url(r'^bangumi/$', views.bangumi_list, name='bangumi_list'),   # 一覧
     #直前情報
-    url(r'^tyokuzen/$', views.tyokuzen_list, name='tyokuzen_list'),   # 一覧
+    url(r'^chokuzen/$', views.chokuzen_list, name='chokuzen_list'),   # 一覧
     #前走
     url(r'^zensou/$', views.zensou_list, name='zensou_list'),   # 一覧
     #騎手

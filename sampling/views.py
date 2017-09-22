@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from sampling.models import Uma_kihon
 from sampling.models import Bangumi
-from sampling.models import Tyokuzen
+from sampling.models import Chokuzen
 from sampling.models import Zensou
 from sampling.models import Kishu_Sabun
 from sampling.models import Kyousouba
@@ -49,12 +49,12 @@ def bangumi_list(request):
                   'sampling/bangumi_list.html',
                   {'bangumi': bangumi})
 
-def tyokuzen_list(request):
+def chokuzen_list(request):
     """直前情報の一覧"""
-    tyokuzen = Tyokuzen.objects.all().order_by('id')
+    chokuzen = Chokuzen.objects.all().order_by('id')
     return render(request,
-                  'sampling/tyokuzen_list.html',
-                  {'tyokuzen': tyokuzen})
+                  'sampling/chokuzen_list.html',
+                  {'chokuzen': chokuzen})
 
 def zensou_list(request):
     """前走情報の一覧"""

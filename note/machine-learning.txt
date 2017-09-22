@@ -6,5 +6,7 @@ pip3 install pandas  # データ操作
 pip3 install chainer # ニューラルネットワーク
 pip3 install jupyter
 
-
 atom -> Preferences(環境設定) -> Install -> terminal -> platformio-ide-terminal
+
+
+
