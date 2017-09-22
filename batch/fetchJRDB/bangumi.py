@@ -21,7 +21,7 @@ def fetch(filename):
                 if len(line.strip()) != 0:
                     # 場2 年2 回1 日1 R2
                     key = rec[0:8]
-                    print("key : " + key)
+                    # print("key : " + key)
                     # 出走頭数
                     # print("rec : " + rec)
                     tousuu = encoding.bytelen(rec, 94, 96)
@@ -31,7 +31,7 @@ def fetch(filename):
                     # print("レース : "+race)
                     # 1着賞金
                     syoukin = encoding.bytelen(rec, 125, 130)
-                    print("syoukin : " + syoukin)
+                    # print("syoukin : " + syoukin)
 
                     data = (key,tousuu,syoukin)
                     cur.execute(insert_stmt, data)
