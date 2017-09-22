@@ -2,12 +2,13 @@ import sys,os
 sys.path.append(os.pardir)
 
 import MySQLdb
-from util import encoding
+from util import encoding, profile
 from util.database import Keibadb
 
-def fetch():
-    print("file_bangumi_BAC.txt")
-    with open("../input/file_bangumi_BAC.txt", "r", encoding="cp932") as input:
+def fetch(filename):
+    print("file_bangumi_BAC : " + filename)
+    make = profile.fetchDate(filename)
+    with open(filename, "r", encoding="cp932") as input:
         try:
             db = Keibadb()
             cnn = db.connect()
@@ -22,12 +23,12 @@ def fetch():
                     key = rec[0:8]
                     print("key : " + key)
                     # 出走頭数
-                    print("rec : " + rec)
+                    # print("rec : " + rec)
                     tousuu = encoding.bytelen(rec, 94, 96)
-                    print("tousuu : "+tousuu)
+                    # print("tousuu : "+tousuu)
 
                     race = encoding.bytelen(rec, 106, 124)
-                    print("レース : "+race)
+                    # print("レース : "+race)
                     # 1着賞金
                     syoukin = encoding.bytelen(rec, 125, 130)
                     print("syoukin : " + syoukin)
@@ -36,9 +37,11 @@ def fetch():
                     cur.execute(insert_stmt, data)
                     rows = cur.fetchall()
 
+                    """
                     for row in rows:
                         print("登録")
                         print("%s" % (row[0]))
+                    """
 
             db.commitAndClose(cnn)
         except MySQLdb.Error as e:
